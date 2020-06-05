@@ -19,3 +19,9 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+-keep class com.analytics.sdk.** {*;}
+-keep class com.androidquery.** {*;}
+-keep class com.bytedance.sdk.openadsdk.** { *; }
+-keep class com.androidquery.callback.** {*;}
+-keep public interface com.bytedance.sdk.openadsdk.downloadnew.** {*;}
