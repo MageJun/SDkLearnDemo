@@ -16,7 +16,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -29,5 +29,10 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation files('libs\\android-query-full.0.26.7.jar')
+    implementation files('libs\\GDTSDK.unionNormal.4.211.1081.aar')
+
+    implementation files('libs\\juhe_知音漫客_sdk_v2500001_202006041207_release.aar')
 
 }
