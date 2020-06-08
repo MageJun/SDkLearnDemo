@@ -34,7 +34,9 @@ public class MainActivity extends AppCompatActivity {
 
         //commit test2
 
-        //commit test3
+        //delete commit test3
+
+        //commit test4
 
         initView();
     }
