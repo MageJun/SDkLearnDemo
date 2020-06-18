@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(GlobalConfig.RConfig.MAIN_ACTIVITY_LAYOUT_ID);
+
         //commit test1
 
         //commit test2
