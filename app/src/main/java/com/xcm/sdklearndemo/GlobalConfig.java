@@ -54,6 +54,7 @@ public final class GlobalConfig {
          */
         int SPLASH_ACTIVITY_LAYOUT_ID = R.layout.activity_ad_splash;
         int SPLASH_ACTIVITY_LAYOUT_AD_ID = R.id.splash_layout;
+        int SPLASH_SKIP_LAYOUT_ID = R.layout.splash_skip_view;
 
     }
 }
