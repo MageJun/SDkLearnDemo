@@ -1,2 +1,4 @@
+include ':mylibrary'
+include ':androidSource'
 include ':app'
 rootProject.name = "SDkLearnDemo"

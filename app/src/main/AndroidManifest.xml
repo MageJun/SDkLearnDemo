@@ -39,6 +39,25 @@
                 android:resource="@xml/gdt_file_path"
                 tools:replace="name,resource" />
         </provider>
+
+        <!--  👇 👇  CSJ 相关的配置  👇 👇   -->
+        <provider
+            android:name="com.bytedance.sdk.openadsdk.TTFileProvider"
+            android:authorities="${applicationId}.TTFileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <provider
+            android:name="com.bytedance.sdk.openadsdk.multipro.TTMultiProvider"
+            android:authorities="${applicationId}.TTMultiProvider"
+            android:exported="false" />
+
+
+        <!--  👆 👆   CSJ 相关的配置  👆  👆    -->
     </application>
 
 </manifest>
