@@ -1,0 +1,30 @@
+apply plugin: 'groovy'
+apply plugin: 'maven'
+apply plugin: 'java'
+
+group = 'com.test.plugin'
+version = '1.0.0'
+
+dependencies {
+    implementation gradleApi()
+    implementation localGroovy()
+    // transform 时需要用到gradle tool的api，需要单独引入
+    implementation 'com.android.tools.build:gradle:4.0.0'
+    implementation 'com.android.tools.build:gradle-api:4.0.0'
+    implementation 'org.javassist:javassist:3.20.0-GA'
+    implementation  'org.ow2.asm:asm:5.0.4'
+}
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+uploadArchives{
+    repositories {
+        mavenDeployer{
+            //本地Maven设置为repo
+            repository(url:uri('../repo'))
+        }
+    }
+}

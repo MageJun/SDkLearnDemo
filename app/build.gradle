@@ -1,11 +1,42 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.test.plugin.gradle'
 
+stringEncry {
+    //加密密钥，默认[1,2,3,4,5]
+    decryptKey = [1,2,3,4,5]
+    //需要加密指定目录
+    stringEncryDirList = [
+            "com.xcm.sdklearndemo"
+    ]
+    //需要加密指定文件
+    stringEncryList = [
+            "MainActivity",
+    ]
+    //解密路径
+    decryptFile = "com/xcm/sdklearndemo/XorUtils"
+    //解密方法
+    decryptMethod = "xor_go"
+}
+buildscript {
+    repositories {
+        maven{
+            //本地仓库repo
+            url uri('../repo')
+        }
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:4.0.0"
+        classpath 'com.test.plugin:test_plugin:1.0.0'
+    }
+}
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "com.xcm.sdklearndemo"
+        applicationId "com.yuewen.cooperate.reader"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
@@ -14,9 +45,19 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        config {
+            keyAlias 'key0'
+            keyPassword '123456'
+            storeFile file('open_ad_sdk.keystore')
+            storePassword '123456'
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled true
+            signingConfig signingConfigs.config
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -34,8 +75,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     implementation files('libs\\android-query-full.0.26.7.jar')
-    implementation files('libs\\GDTSDK.unionNormal.4.211.1081.aar')
+    implementation files('libs\\GDTSDK.tangramNormal.4.200.1070_release.aar')
 
-    implementation files('libs\\juhe_魅族通用_sdk_v700004_202006170948_release.aar')
+    implementation files('libs\\juhe_AndroidX_sdk_v1500010_202006091559_release.aar')
 
 }

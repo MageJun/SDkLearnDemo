@@ -2,6 +2,9 @@ package com.xcm.sdklearndemo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,16 +17,33 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.xcm.sdklearndemo.common.GridViewConfig;
+import com.xcm.sdklearndemo.helper.HookHelper;
+import com.xcm.sdklearndemo.helper.RealClass2;
+import com.xcm.sdklearndemo.helper.TestService;
 import com.xcm.sdklearndemo.splash.SplashActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
     private GridView gridView;
+    private int count = 0;
+    private Handler mHandler = new Handler(){
+
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            TestService service = RealClass2.getInstance();
+            Log.i("HookTAG","service = "+service);
+            service.ts("hh",count);
+            service.t2();
+            count++;
+            mHandler.sendEmptyMessageDelayed(0,5*1000);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +61,21 @@ public class MainActivity extends AppCompatActivity {
         //commit test5
 
         initView();
+        TestService service = RealClass2.getInstance();
+        Log.i("HookTAG","service = "+service);
+        service.ts("hh",count);
+        count++;
+        HookHelper.hookTestService();
+        mHandler.sendEmptyMessage(0);
+
     }
 
     private void initView() {
+//        HookHelper.hookNetwork(getApplicationContext());
         gridView = findViewById(GlobalConfig.RConfig.MAIN_ACTIVITY_GRID_ID);
         List<GridViewConfig> data = new ArrayList<GridViewConfig>();
+        String testStr = "Hello worold";
+        Log.i("TestTag",testStr);
         data.add(new GridViewConfig("开屏",GlobalConfig.ChannelId.SPLASH, SplashActivity.class));
         GridAdapter adapter = new GridAdapter();
         adapter.addData(data);
