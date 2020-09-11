@@ -77,6 +77,14 @@ public class MainActivity extends AppCompatActivity {
         String testStr = "Hello worold";
         Log.i("TestTag",testStr);
         data.add(new GridViewConfig("开屏",GlobalConfig.ChannelId.SPLASH, SplashActivity.class));
+        data.add(new GridViewConfig("测试", "", SplashActivity.class, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                 Intent intent = new Intent(MainActivity.this,TestSingleTaskActivity.class);
+                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                 startActivity(intent);
+            }
+        }));
         GridAdapter adapter = new GridAdapter();
         adapter.addData(data);
         gridView.setAdapter(adapter);

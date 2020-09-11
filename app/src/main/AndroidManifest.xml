@@ -25,6 +25,9 @@
             android:name=".HomeActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".splash.SplashActivity" />
+        <activity android:name=".TestSingleTaskActivity"
+            android:taskAffinity="com.test"
+            android:launchMode="singleTask"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -9,12 +9,20 @@ import android.util.Log;
  */
 
 public class ProxyClass implements TestService {
+    private TestService service;
+
+    public ProxyClass(TestService service){
+        this.service = service;
+    }
+
     @Override
     public void ts(String s, int a) {
         Log.i("HookTAG","ProxyClass s = "+s+",a = "+a);
+        service.ts(s,a);
     }
     @Override
     public void t2() {
         Log.i("HookTAG","ProxyClass RealClass t2");
+        service.t2();
     }
 }
